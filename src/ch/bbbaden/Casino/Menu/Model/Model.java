@@ -30,7 +30,6 @@ public class Model {
     private Main mainApp;
 
     public void startSlots() throws IOException {
-        mainApp.startSlots();
     }
 
     public void startBlackJack() throws IOException, SQLException, ClassNotFoundException {
@@ -38,15 +37,13 @@ public class Model {
     }
 
     public void startRoulette() throws IOException, SQLException, ClassNotFoundException {
-        mainApp.startRoulette();
     }
 
     public void startYatzy() throws IOException, SQLException, ClassNotFoundException {
-        mainApp.startYatzyStart();
     }
 
     public void startBingo() throws IOException, SQLException, ClassNotFoundException {
-        mainApp.startBingo();
+
     }
 
     public void openBuyCredits() throws IOException, SQLException, ClassNotFoundException {
@@ -73,12 +70,12 @@ public class Model {
 
         sql.updateUser();
         this.user = user;
-        
+
         double oldCredits = credit;
         String oldName = name;
         String oldRole = role;
 
-        for (int i = 0;i < sql.getUsers().size(); i++) {
+        for (int i = 0; i < sql.getUsers().size(); i++) {
             benutzer.add(sql.getUsers().get(i));
         }
 
@@ -95,10 +92,10 @@ public class Model {
         changes.addPropertyChangeListener(listener);
 
     }
-    
-    public void setNewCredit() throws SQLException, ClassNotFoundException{
-        String oldCredits= "";
-        double credit= sql.getCreditUser(user.getName());
+
+    public void setNewCredit() throws SQLException, ClassNotFoundException {
+        String oldCredits = "";
+        double credit = sql.getCreditUser(user.getName());
         changes.firePropertyChange("credit", oldCredits, credit);
     }
 }
